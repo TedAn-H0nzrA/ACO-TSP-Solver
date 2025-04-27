@@ -21,4 +21,7 @@ namespace Constant {
     // Text & Font
     inline constexpr int tf_size = 20;
     inline Color tf_color{Color::White};
+
+    // Lines Path
+    inline Color l_color{254, 254, 226};
 }
