@@ -12,9 +12,9 @@ namespace Constant {
     inline float HEIGHT = static_cast<float>(desktop.height);
     inline float FPS = 60;
     inline string TITLE = "TSP_ACO";
-    inline Color BACKGROUNG{125, 125, 125};
+    inline Color BACKGROUND{30, 30, 47};
 
     // Town
     inline constexpr float t_radius = 10;
-    inline Color t_color{255, 255, 255};
+    inline Color t_color{255, 215, 0};
 }
