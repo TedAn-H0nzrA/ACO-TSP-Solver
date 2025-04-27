@@ -1,0 +1,20 @@
+#pragma once
+
+#include <SFML/Graphics.hpp>
+#include <string>
+using namespace std;
+using namespace sf;
+
+namespace Constant {
+    // Window
+    inline VideoMode desktop = VideoMode::getDesktopMode();
+    inline float WIDTH = static_cast<float>(desktop.width);
+    inline float HEIGHT = static_cast<float>(desktop.height);
+    inline float FPS = 60;
+    inline string TITLE = "TSP_ACO";
+    inline Color BACKGROUNG{125, 125, 125};
+
+    // Town
+    inline constexpr float t_radius = 10;
+    inline Color t_color{255, 255, 255};
+}

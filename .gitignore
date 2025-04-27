@@ -1,0 +1,6 @@
+# IDE
+.vscode
+
+# Unecessary folder
+build/
+out/
