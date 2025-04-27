@@ -4,10 +4,12 @@ using namespace sf;
 
 Simulation::Simulation() :
         isRunning(false),
-        isAddTown(false)
+        isAddTown(false),
+        textRender()
 {
     window.create(Constant::desktop, Constant::TITLE, Style::Default);
     window.setFramerateLimit(Constant::FPS);
+    textRender.setString(Constant::TITLE);
 }
 
 void Simulation::todo() { 
@@ -47,6 +49,7 @@ void Simulation::draw() {
     for (auto&& town : towns) {
         town.draw(window);
     }
+    textRender.draw(window);
 }
 
 void Simulation::run() {

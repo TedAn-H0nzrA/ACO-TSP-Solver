@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include "Town.hpp"
+#include "TextRender.hpp"
 using namespace sf;
 using namespace std;
 
@@ -15,6 +16,7 @@ class Simulation{
 
         vector<Town> towns;
 
+        TextRender textRender;
 
     public:
         Simulation();

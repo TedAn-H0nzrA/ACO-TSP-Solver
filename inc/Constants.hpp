@@ -17,4 +17,8 @@ namespace Constant {
     // Town
     inline constexpr float t_radius = 10;
     inline Color t_color{255, 215, 0};
+
+    // Text & Font
+    inline constexpr int tf_size = 20;
+    inline Color tf_color{Color::White};
 }

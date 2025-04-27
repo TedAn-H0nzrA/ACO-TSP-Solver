@@ -5,6 +5,7 @@ project(TSP_ACO)
 # Répertoires
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
 set(INC_DIR ${CMAKE_SOURCE_DIR}/inc)
+set(FONTS_DIR ${CMAKE_SOURCE_DIR}/font)
 
 # Où sera placé l'exécutable
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/out)
@@ -16,6 +17,13 @@ file(GLOB_RECURSE SOURCES
 
 # Création de l'exécutable
 add_executable(${PROJECT_NAME} ${SOURCES})
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    FONTS_DIR="${FONTS_DIR}"
+)
+
+# Copie des assets dans le dossier de build
+file(COPY ${FONTS_DIR} DESTINATION ${CMAKE_BINARY_DIR})
 
 # Dossiers d'include
 target_include_directories(${PROJECT_NAME} PRIVATE
