@@ -19,8 +19,13 @@ namespace Constant {
     inline Color t_color{255, 215, 0};
 
     // Text & Font
-    inline constexpr int tf_size = 20;
+    inline constexpr int tf_size = 15;
     inline Color tf_color{Color::White};
+
+    // Text render
+    inline string txt_iteration = "Itération : "; 
+    inline string txt_distance = "Distance minimal : "; 
+    inline string txt_executionTime = "Temps d'execution : "; 
 
     // Lines Path
     inline Color l_color{254, 254, 226};

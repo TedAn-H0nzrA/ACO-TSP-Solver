@@ -12,6 +12,7 @@ TextRender::TextRender() {
     text.setFont(font);
     text.setFillColor(Constant::tf_color);
     text.setCharacterSize(Constant::tf_size);
+    text.setStyle(Text::Regular);
 }
 
 void TextRender::setString(const string& some_text) {

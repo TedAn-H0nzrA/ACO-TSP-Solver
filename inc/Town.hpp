@@ -14,4 +14,6 @@ class Town{
 
         void setPosition(float x, float y);
         Vector2f getPosition() const;
+
+        double distanceTo(const Town& other) const;
 };

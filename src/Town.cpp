@@ -1,6 +1,8 @@
 #include "Town.hpp"
 #include "Constants.hpp"
+#include <cmath>
 using namespace sf;
+using namespace std;
 
 Town::Town() :
         radius(Constant::t_radius)
@@ -20,4 +22,15 @@ void Town::setPosition(float x, float y) {
 
 Vector2f Town::getPosition() const {
     return shape.getPosition();
+}
+
+double Town::distanceTo(const Town& other) const {
+    auto thisPos = this->getPosition();
+    auto otherPos = other.getPosition();
+
+    double posX = pow((thisPos.x - otherPos.x), 2);
+    double posY = pow((thisPos.y - otherPos.y), 2);
+
+    double distance = sqrt(posX + posY);
+    return distance;
 }
