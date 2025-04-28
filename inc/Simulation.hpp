@@ -4,7 +4,7 @@
 #include <vector>
 #include "Town.hpp"
 #include "PathRender.hpp"
-#include "TextRender.hpp"
+#include "Texts/TextRender.hpp"
 #include "AI/BruteForce.hpp"
 using namespace sf;
 using namespace std;

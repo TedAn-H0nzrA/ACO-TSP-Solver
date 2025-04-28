@@ -24,7 +24,7 @@ class BruteForce {
 
         // Méthode pricipale d'exetion via BruteForce
         // Prend en entrée le vecteur des villes et retourn la meilleur chemin trouvée
-        vector<int> solveBy_bruteForce(const vector<Town>& towns);
+        vector<int> solveBy_bruteForce(const vector<Town>& towns, PathRender& pathRender);
 
         // Méthode GETTERS resultat
         double getMinPathLength() const;

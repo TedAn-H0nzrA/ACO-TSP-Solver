@@ -36,7 +36,13 @@ void Simulation::runBruteForce() {
         return;
     }
 
-    
+    // Execution de l'algorithme et mesuré le temps 
+    currentPath = bruteForce.solveBy_bruteForce(towns, pathRender);
+    pathRender.setPath(towns, currentPath);
+
+    // Obtenir les résultats
+    BF_totalDist = bruteForce.getMinPathLength();
+    BF_timeExecution = bruteForce.getExecutionTime();
 }
 
 void Simulation::todo() { 
@@ -65,9 +71,13 @@ void Simulation::manageEvent(Event& event) {
         if (event.key.code == Keyboard::R) {
             isRunning = true;
             isAddTown = false;
+            runBruteForce();
+
         } else if (event.key.code == Keyboard::A) {
             isRunning = false;
             isAddTown = true;
+        } else if (event.key.code == Keyboard::Space) {
+            towns.clear();
         }
     }
 
@@ -82,6 +92,8 @@ void Simulation::draw() {
     for (auto&& text : texts) {
         text.draw(window);
     }
+
+    pathRender.draw(window);
 }
 
 void Simulation::run() {

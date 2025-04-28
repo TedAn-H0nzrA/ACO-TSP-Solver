@@ -20,7 +20,7 @@ double BruteForce::calculateDistance(const vector<Town>& town, const vector<int>
     return dist;
 }
 
-vector<int> BruteForce::solveBy_bruteForce(const vector<Town>& towns) {
+vector<int> BruteForce::solveBy_bruteForce(const vector<Town>& towns, PathRender& pathRender) {
     // Avoir le nombre totale de ville et les indexer dans une nouvelle vecteur pour une manipulation flexible
     size_t n = towns.size();
     vector<int> path(n);
