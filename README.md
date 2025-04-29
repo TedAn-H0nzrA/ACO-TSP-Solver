@@ -1,4 +1,4 @@
-# TSP Solver avec ACO
+# TSP_ACO – Résolution du TSP avec ACO et Brute Force
 
 ## Description
 
@@ -6,38 +6,52 @@ Ce projet est une simulation du **problème du voyageur de commerce** (TSP) rés
 
 Les fonctionnalités prévues comprennent l'affichage des villes, le calcul des distances, et la visualisation du chemin optimal trouvé par l'algorithme ACO. Le projet est encore en développement et certaines fonctionnalités doivent être ajoutées.
 
-## Structure du Projet
-
-Le projet est organisé selon la structure suivante :
-
-```shell
-ACO-TSP-Solver/ 
-│ ├── inc/ # Dossiers contenant les fichiers d'en-tête (.hpp) 
-│ ├── Constants.hpp # Définit les constantes globales du projet 
-│ ├── PathRender.hpp # Déclare la classe PathRenderer pour dessiner le chemin 
-│ ├── Simulation.hpp # Déclare la classe Simulation pour gérer l'algorithme TSP et ACO 
-│ ├── TextRender.hpp # Déclare la classe TextRender pour afficher du texte (scores, informations) 
-│ └── Town.hpp # Déclare la classe Town représentant une ville avec des coordonnées 
-│ 
-├── src/ # Dossier contenant les fichiers sources (.cpp) 
-│ ├── main.cpp # Point d'entrée du programme 
-│ ├── PathRender.cpp # Implémentation de la classe PathRenderer 
-│ ├── Simulation.cpp # Implémentation de la classe Simulation 
-│ ├── TextRender.cpp # Implémentation de la classe TextRender 
-│ └── Town.cpp # Implémentation de la classe Town 
-│ 
-├── font/ # Dossier contenant la police de caractères utilisée pour l'affichage du texte 
-│ └── OpenSans.ttf # Police de caractères utilisée dans l'application 
-│ 
-└── CMakeLists.txt # Fichier de configuration CMake pour la compilation du projet
+## 🗂️ Structure du projet
 
 ```
+ACO-TSP-Solver/
+├── inc/ # Dossiers contenant les fichiers d'en-tête (.hpp) 
+│   ├── AI/
+│   │   ├── BruteForce.hpp
+│   │   └── ACO.hpp
+│   ├── Texts/
+│   │   └── TextRender.hpp
+│   ├── Constants.hpp # Définit les constantes globales du projet 
+│   ├── PathRender.hpp # Déclare la classe PathRenderer pour dessiner le chemin 
+│   ├── Simulation.hpp # Déclare la classe Simulation pour gérer l'algorithme TSP et ACO 
+│   └── Town.hpp # Déclare la classe Town représentant une ville avec des coordonnées 
+│
+├── src/ # Dossier contenant les fichiers sources (.cpp)
+│   ├── AI/
+│   │   ├── BruteForce.cpp
+│   │   └── ACO.cpp
+│   ├── Texts/
+│   │   └── TextRender.cpp
+│   ├── main.cpp # Point d'entrée du programme 
+│   ├── PathRender.cpp # Implémentation de la classe PathRenderer 
+│   ├── Simulation.cpp # Implémentation de la classe Simulation 
+│   └── Town.cpp # Implémentation de la classe Town 
+│ 
+├── font/ # Dossier contenant la police de caractères utilisée pour l'affichage du texte 
+│   └── OpenSans.ttf # Police de caractères utilisée dans l'application 
+│ 
+└── CMakeLists.txt # Fichier de configuration CMake pour la compilation du projet
+```
+
+---
 
 ## Compilation
 
 Le projet utilise **CMake** pour la configuration et la compilation. Pour compiler le projet, suivez ces étapes :
 
-1. Clonez ou téléchargez le projet sur votre machine.
+1. Clonez ou téléchargez le projet sur votre machine:
+
+   ```bash
+      git clone https://github.com/TedAn-H0nzrA/ACO-TSP-Solver.git
+      cd ACO-TSP-Solver
+
+   ```
+
 2. Créez un répertoire de construction et accédez à celui-ci :
 
    ```bash
@@ -64,6 +78,13 @@ Le projet utilise **CMake** pour la configuration et la compilation. Pour compil
    ./TSP_ACO
     ```
 
-## Dépendances
+---
 
-**SFML** : Ce projet utilise SFML pour la gestion de la fenêtre graphique et l'affichage. Assurez-vous d'avoir SFML installé sur votre machine.
+## 🧩 Dépendances
+
+- [SFML](https://www.sfml-dev.org/) ≥ 2.5  
+Assurez-vous que SFML est installé et détecté par CMake.
+
+---
+
+## Contrubution
