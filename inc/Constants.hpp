@@ -28,6 +28,6 @@ namespace Constant {
     inline string txt_executionTime = "Temps d'execution : "; 
 
     // Lines Path
-    inline Color l_color{180, 180, 180};
-    // inline Color l_Bestcolor{255, 215, 0};
+    inline Color l_color{210, 210, 210};
+    inline Color l_Bestcolor{255, 215, 0};
 }

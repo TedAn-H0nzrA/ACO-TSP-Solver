@@ -15,6 +15,8 @@ Simulation::Simulation() :
     window.create(Constant::desktop, Constant::TITLE, Style::Default, settings);
     window.setFramerateLimit(Constant::FPS);
 
+    bestPath.setLineColor(Constant::l_Bestcolor);
+
     // Text render
     txt_iteration.setString(Constant::txt_iteration);
     txt_iteration.setPosition(0, 10);
@@ -36,15 +38,13 @@ void Simulation::runBruteForce() {
         return;
     }
 
-    // Execution de l'algorithme et mesuré le temps 
-    currentPath = bruteForce.solveBy_bruteForce(towns, pathRender);
-    pathRender.setPath(towns, currentPath);
-
-    // Obtenir les résultats
-    BF_totalDist = bruteForce.getMinPathLength();
-    BF_timeExecution = bruteForce.getExecutionTime();
+    if (!bruteForce.isSolvingInProgress()) {
+        txt_iteration.setString(Constant::txt_iteration + "Calcul en cours...");
+        txt_distance.setString(Constant::txt_distance + "Calcul en cours...");
+        txt_executionTime.setString(Constant::txt_executionTime + "Calcul en cours...");
+        bruteForce.startSolving(towns, path);
+    }
 }
-
 void Simulation::todo() { 
     if (isAddTown) {
         if ((Mouse::isButtonPressed(Mouse::Left)) && timeAddTown.getElapsedTime().asSeconds() >= 0.2) {
@@ -56,9 +56,18 @@ void Simulation::todo() {
         }
     }
     
-    if (isRunning) {
-        if (BF_isSolving && !BF_isSolve) {
-
+    if (isRunning && BF_isSolving) {
+        if (bruteForce.stepSolving(towns, path)) {
+            // Mettre à jour les textes en temps réel
+            txt_iteration.setString(Constant::txt_iteration + to_string(bruteForce.getIteration()));
+            txt_distance.setString(Constant::txt_distance + to_string(bruteForce.getMinPathLength()));
+            txt_executionTime.setString(Constant::txt_executionTime + to_string(bruteForce.getExecutionTime()) + " s");
+            bestPath.clear();
+            bestPath.setPath(towns, bruteForce.getBestPath());
+        } else {
+            // Calcul terminé
+            BF_isSolving = false;
+            BF_isSolve = true;
         }
     } 
     
@@ -68,16 +77,36 @@ void Simulation::manageEvent(Event& event) {
     if (event.type == Event::Closed) window.close();
 
     if (event.type == Event::KeyPressed) {
-        if (event.key.code == Keyboard::R) {
+        if (event.key.code == Keyboard::B) {
             isRunning = true;
             isAddTown = false;
+            BF_isSolving = true;
             runBruteForce();
 
         } else if (event.key.code == Keyboard::A) {
+            // Implementation pour ACO
+        } else if (event.key.code == Keyboard::T) {
             isRunning = false;
             isAddTown = true;
         } else if (event.key.code == Keyboard::Space) {
+            // Tout réinitialliser
+
             towns.clear();
+            path.clear();
+            bestPath.clear();
+            bruteForce = BruteForce();
+            BF_isSolving = false;
+            BF_isSolve = false;
+            BF_totalDist = 0;
+            BF_timeExecution = 0;
+
+            bestPath = PathRender();
+
+            // Réinitialiser les textes
+            txt_iteration.setString(Constant::txt_iteration);
+            txt_distance.setString(Constant::txt_distance);
+            txt_executionTime.setString(Constant::txt_executionTime);
+
         }
     }
 
@@ -93,7 +122,8 @@ void Simulation::draw() {
         text.draw(window);
     }
 
-    pathRender.draw(window);
+    path.draw(window);
+    bestPath.draw(window);
 }
 
 void Simulation::run() {

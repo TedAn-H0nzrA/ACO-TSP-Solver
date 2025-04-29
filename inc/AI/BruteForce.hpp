@@ -15,6 +15,10 @@ class BruteForce {
         size_t iteration; // Nombre d'itération lors du calcule
         double executionTime; // Temps d'execution
 
+        bool isSolving;
+        vector<int> currentPath;
+        int maxIterationPerFrame;
+
     public:
         // Constructor
         BruteForce();
@@ -24,7 +28,10 @@ class BruteForce {
 
         // Méthode pricipale d'exetion via BruteForce
         // Prend en entrée le vecteur des villes et retourn la meilleur chemin trouvée
-        vector<int> solveBy_bruteForce(const vector<Town>& towns, PathRender& pathRender);
+        void startSolving(const vector<Town>& towns, PathRender& pathRender);
+        bool stepSolving(const vector<Town>& towns, PathRender& pathRender);
+        bool isSolvingInProgress() const;
+
 
         // Méthode GETTERS resultat
         double getMinPathLength() const;

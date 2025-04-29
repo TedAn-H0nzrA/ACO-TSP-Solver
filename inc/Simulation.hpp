@@ -32,7 +32,8 @@ class Simulation{
         bool BF_isSolving;
         bool BF_isSolve;
 
-        PathRender pathRender;
+        PathRender path;
+        PathRender bestPath;
 
     public:
         Simulation();

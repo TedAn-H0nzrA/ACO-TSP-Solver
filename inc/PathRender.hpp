@@ -16,5 +16,8 @@ class PathRender{
         // Draw
         void draw(RenderWindow& window);
 
+        void setLineColor(Color& newColor);
         void setPath(const vector<Town>& town, const vector<int>& path);
+
+        void clear();
 };

@@ -12,14 +12,23 @@ void PathRender::draw(RenderWindow& window) {
     window.draw(lines);
 }
 
-void PathRender::setPath(const vector<Town>& town, const vector<int>& path) {
-    // Effacer les lignes précédents (anciennes)
-    lines.clear();
-    lines.setPrimitiveType(LineStrip);
+void PathRender::setLineColor(Color& newColor) {
+    lineColor = newColor;
+}
 
+void PathRender::setPath(const vector<Town>& town, const vector<int>& path) {
+    lines.setPrimitiveType(LineStrip);
+    
     for (int idx : path) {
         lines.append(Vertex(town[idx].getPosition(), lineColor));
     }
     // Retourner au début du point pour terminer le chemin
-    lines.append(Vertex(town[0].getPosition(), lineColor));
+    if (!path.empty()) {
+        lines.append(Vertex(town[path[0]].getPosition(), lineColor));
+    }
+}
+
+void PathRender::clear() {
+    // Effacer les lignes précédents (anciennes)
+    lines.clear();
 }
